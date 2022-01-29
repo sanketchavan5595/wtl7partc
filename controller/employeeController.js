@@ -17,14 +17,7 @@ router.get("/", (req, res) => {
   });
 });
 
-// insert into employee (fullName, email, phoneNumber)
-// values (
-// 	'lorem ipsum',
-//     'loremipsum@mgial.com',
-//     '789654130'
-// );
-
-// for submmitting the data
+// CREATE
 router.post("/", (req, res) => {
   const fullName = req.body.fullName;
   const email = req.body.email;
@@ -40,15 +33,23 @@ router.post("/", (req, res) => {
   );
 });
 
+// READ
 router.get("/list", (req, res) => {
-  //   res.send("this is from the data");
   const sqlQuery = `select * from employee`;
   connection.query(sqlQuery, (error, results, fields) => {
     const newArr = [...results];
-    console.log(newArr);
     res.render("employee/list", {
       list: newArr,
     });
+  });
+});
+
+// DELETE
+router.get("/delete/:id", (req, res) => {
+  const id = req.params.id;
+  const sqlQuery = `delete from employee where id=? ;`;
+  connection.query(sqlQuery, [id], (error, results, fields) => {
+    res.redirect("/employee/list");
   });
 });
 

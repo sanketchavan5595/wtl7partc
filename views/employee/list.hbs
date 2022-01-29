@@ -1,6 +1,7 @@
 <h1>
     Employee List
 </h1>
+
 <table>
     <thead>
         <tr>
@@ -18,8 +19,8 @@
             <td>{{this.email}}</td>
             <td>{{this.phoneNumber}}</td>
             <td>
-                {{!-- <a href="/employee/{{this.id}}">Edit</a> --}}
-                <a href="">Delete</a>
+                <a href="/employee/{{this.id}}">Edit</a>
+                <a href="/employee/delete/{{this.id}}" onclick="return confirm('Are you sure??') ">Delete</a>
             </td>
         </tr>
         {{/each}}
