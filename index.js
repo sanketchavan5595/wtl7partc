@@ -25,7 +25,7 @@ app.use(
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
-  res.send("hello world");
+  res.send("hello world <a href='/employee' > CRUD </a>");
 });
 
 app.use("/employee", employeeController);

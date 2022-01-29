@@ -1,0 +1,18 @@
+<h1>
+    {{viewTitle}}
+</h1>
+
+
+<form action="/employee/update" method="post" autocomplete="off">
+    <label for="id">ID</label>
+    <input type="text" id="id" value="{{employee.id}}" name="id" readonly>
+    <label for="fullName">FullName</label>
+    <input type="text" id="fullName" name="fullName" value="{{employee.fullName}}">
+    <label for="email">Email</label>
+    <input type="text" id="email" name="email" value="{{employee.email}}">
+    <label for="phoneNumber">Phone Number</label>
+    <input type="text" id="phoneNumber" name="phoneNumber" minlength="10" maxlength="10"
+        value="{{employee.phoneNumber}}">
+    <input type="submit" value="Submit">
+
+</form>

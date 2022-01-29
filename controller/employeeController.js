@@ -44,6 +44,34 @@ router.get("/list", (req, res) => {
   });
 });
 
+// UPDATE
+router.get("/:id", (req, res) => {
+  const id = req.params.id;
+  sqlQuery = `select * from employee where id=? ;`;
+  connection.query(sqlQuery, [id], (error, results, fields) => {
+    const newArr = [...results];
+    res.render("employee/update", {
+      employee: newArr[0],
+      viewTitle: "Update an Employee",
+    });
+  });
+});
+
+router.post("/update", (req, res) => {
+  const id = req.body.id;
+  const fullName = req.body.fullName;
+  const email = req.body.email;
+  const phoneNumber = req.body.phoneNumber;
+  sqlQuery = `update employee set fullname = ? , email = ?, phoneNumber = ? where id = ? ;`;
+  connection.query(
+    sqlQuery,
+    [fullName, email, phoneNumber, id],
+    (error, results, fields) => {
+      res.redirect("/employee/list");
+    }
+  );
+});
+
 // DELETE
 router.get("/delete/:id", (req, res) => {
   const id = req.params.id;
