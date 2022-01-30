@@ -14,6 +14,7 @@ const router = express.Router();
 router.get("/", (req, res) => {
   res.render("employee/addOrEdit", {
     viewTitle: "Add an Employee",
+    style: "addOrEdit.css",
   });
 });
 
@@ -40,6 +41,7 @@ router.get("/list", (req, res) => {
     const newArr = [...results];
     res.render("employee/list", {
       list: newArr,
+      style: "list.css",
     });
   });
 });
@@ -51,6 +53,7 @@ router.get("/:id", (req, res) => {
   connection.query(sqlQuery, [id], (error, results, fields) => {
     const newArr = [...results];
     res.render("employee/update", {
+      style: "update.css",
       employee: newArr[0],
       viewTitle: "Update an Employee",
     });

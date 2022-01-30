@@ -12,7 +12,8 @@ const hbs = exphbs.create({
   defaultLayout: "mainLayout",
   layoutsDir: __dirname + "/views/layouts/",
 });
-
+app.use(express.static(__dirname + "/public"));
+// app.use(express.static("public"));
 app.set("views", path.join(__dirname, "/views/"));
 app.engine("hbs", hbs.engine);
 app.set("view engine", "hbs");
